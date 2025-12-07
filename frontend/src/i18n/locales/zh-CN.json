@@ -32,7 +32,8 @@
             "parsing": "解析中",
             "completed": "已完成",
             "failed": "解析失败",
-            "duplicate": "重复"
+            "duplicate": "重复",
+            "imported": "已导入"
         },
         "actions": {
             "start_parse": "开始解析",
@@ -64,6 +65,8 @@
         },
         "actions": {
             "save_to_notion": "保存到 Notion",
+            "saving": "保存中...",
+            "updating": "更新中...",
             "save_to_dict": "保存到字典",
             "next": "下一个",
             "previous": "上一个"

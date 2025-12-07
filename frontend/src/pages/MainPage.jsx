@@ -263,6 +263,11 @@ function MainPage() {
 
                     successCount++
                     toast.success(t('toast.import.success_single', { name: resume.name }), 5000)
+
+                    // 更新简历的importedToNotion状态
+                    setResumes(prev => prev.map(r =>
+                        r.id === resume.id ? { ...r, importedToNotion: true } : r
+                    ))
                 } catch (error) {
                     failCount++
                     failedResumes.push(resume.name)

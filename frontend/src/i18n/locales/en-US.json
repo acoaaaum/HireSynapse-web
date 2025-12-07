@@ -32,7 +32,8 @@
             "parsing": "Parsing",
             "completed": "Completed",
             "failed": "Failed",
-            "duplicate": "Duplicate"
+            "duplicate": "Duplicate",
+            "imported": "Imported"
         },
         "actions": {
             "start_parse": "Start Parse",
@@ -64,6 +65,8 @@
         },
         "actions": {
             "save_to_notion": "Save to Notion",
+            "saving": "Saving...",
+            "updating": "Updating...",
             "save_to_dict": "Save to Dictionary",
             "next": "Next",
             "previous": "Previous"

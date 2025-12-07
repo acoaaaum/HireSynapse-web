@@ -57,8 +57,15 @@ function ResumeList({ resumes, onStartParse, onReview, onImportAll, onRetry, onU
                                 </div>
                                 <div className="resume-details">
                                     <div className="resume-name">{resume.name}</div>
-                                    <div className={`resume-status ${badge.class}`}>
-                                        {badge.text}
+                                    <div className="resume-status-row">
+                                        <div className={`resume-status ${badge.class}`}>
+                                            {badge.text}
+                                        </div>
+                                        {resume.importedToNotion && (
+                                            <div className="resume-status status-imported">
+                                                {t('resume_list.status.imported')}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

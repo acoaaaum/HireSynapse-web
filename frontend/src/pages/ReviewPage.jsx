@@ -27,6 +27,8 @@ function ReviewPage() {
     const [pdfUrl, setPdfUrl] = useState(null)
     const [showAddDictModal, setShowAddDictModal] = useState(false)
     const [addDictField, setAddDictField] = useState(null)
+    const [isSaving, setIsSaving] = useState(false)
+    const [isUpdating, setIsUpdating] = useState(false)
     const [addDictValue, setAddDictValue] = useState('')
 
     useEffect(() => {
@@ -64,6 +66,7 @@ function ReviewPage() {
     }
 
     const handleSaveToNotion = async () => {
+        setIsSaving(true)
         try {
             // 检查Notion配置
             const notionConfig = localStorage.getItem('notionConfig')
@@ -108,11 +111,23 @@ function ReviewPage() {
             const result = await response.json()
             toast.success(t('toast.notion.save_success', { pageId: result.page_id || result.id || '已创建' }), 5000)
 
+            // 更新localStorage中的importedToNotion状态
+            const stored = localStorage.getItem('resume_history')
+            if (stored) {
+                const { resumes: storedResumes } = JSON.parse(stored)
+                const updatedResumes = storedResumes.map(r =>
+                    r.id === currentResume.id ? { ...r, importedToNotion: true } : r
+                )
+                localStorage.setItem('resume_history', JSON.stringify({ resumes: updatedResumes }))
+            }
+
             // 可选: 跳转回主页或下一个简历
             // navigate('/')
         } catch (error) {
             console.error('保存到Notion失败:', error)
             toast.error(t('toast.notion.save_failed', { error: error.message }))
+        } finally {
+            setIsSaving(false)
         }
     }
 
@@ -212,6 +227,7 @@ function ReviewPage() {
     }
 
     const handleOverwriteUpdate = async () => {
+        setIsUpdating(true)
         try {
             // 检查Notion配置
             const notionConfig = localStorage.getItem('notionConfig')
@@ -261,11 +277,23 @@ function ReviewPage() {
             const result = await response.json()
             toast.success(t('toast.notion.update_success'), 5000)
 
+            // 更新localStorage中的importedToNotion状态
+            const stored = localStorage.getItem('resume_history')
+            if (stored) {
+                const { resumes: storedResumes } = JSON.parse(stored)
+                const updatedResumes = storedResumes.map(r =>
+                    r.id === currentResume.id ? { ...r, importedToNotion: true } : r
+                )
+                localStorage.setItem('resume_history', JSON.stringify({ resumes: updatedResumes }))
+            }
+
             // 可选: 跳转回主页或下一个简历
             // navigate('/')
         } catch (error) {
             console.error('更新Notion失败:', error)
             toast.error(t('toast.notion.update_failed', { error: error.message }))
+        } finally {
+            setIsUpdating(false)
         }
     }
 
@@ -333,8 +361,19 @@ function ReviewPage() {
                         <button className="btn btn-secondary" onClick={handleViewNotionRecord}>
                             {t('review_page.duplicate_banner.view_notion')}
                         </button>
-                        <button className="btn btn-primary" onClick={handleOverwriteUpdate}>
-                            {t('review_page.duplicate_banner.overwrite')}
+                        <button
+                            className="btn btn-primary"
+                            onClick={handleOverwriteUpdate}
+                            disabled={isUpdating}
+                        >
+                            {isUpdating ? (
+                                <>
+                                    <span className="spinner-small"></span>
+                                    <span>{t('review_page.actions.updating')}</span>
+                                </>
+                            ) : (
+                                t('review_page.duplicate_banner.overwrite')
+                            )}
                         </button>
                     </div>
                 </div>
@@ -447,8 +486,19 @@ function ReviewPage() {
                         >
                             {t('review_page.actions.previous')}
                         </button>
-                        <button className="btn btn-primary" onClick={handleSaveToNotion}>
-                            {t('review_page.actions.save_to_notion')}
+                        <button
+                            className="btn btn-primary"
+                            onClick={handleSaveToNotion}
+                            disabled={isSaving}
+                        >
+                            {isSaving ? (
+                                <>
+                                    <span className="spinner-small"></span>
+                                    <span>{t('review_page.actions.saving')}</span>
+                                </>
+                            ) : (
+                                t('review_page.actions.save_to_notion')
+                            )}
                         </button>
                         <button
                             className="btn btn-secondary"
