@@ -1,0 +1,941 @@
+{
+  "companies": {
+    "360": {
+      "standard": "360",
+      "aliases": [
+        "360",
+        "奇虎360",
+        "三六零"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "腾讯": {
+      "standard": "腾讯",
+      "aliases": [
+        "腾讯",
+        "Tencent",
+        "腾讯科技",
+        "腾讯控股"
+      ],
+      "category": "互联网",
+      "location": "深圳"
+    },
+    "阿里巴巴": {
+      "standard": "阿里巴巴",
+      "aliases": [
+        "阿里巴巴",
+        "Alibaba",
+        "阿里",
+        "Ali"
+      ],
+      "category": "互联网",
+      "location": "杭州"
+    },
+    "字节跳动": {
+      "standard": "字节跳动",
+      "aliases": [
+        "字节跳动",
+        "ByteDance",
+        "字节",
+        "字节跳动-抖音"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "百度": {
+      "standard": "百度",
+      "aliases": [
+        "百度",
+        "Baidu",
+        "百度公司"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "京东": {
+      "standard": "京东",
+      "aliases": [
+        "京东",
+        "JD",
+        "京东集团",
+        "JD.com"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "美团": {
+      "standard": "美团",
+      "aliases": [
+        "美团",
+        "Meituan",
+        "美团点评"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "拼多多": {
+      "standard": "拼多多",
+      "aliases": [
+        "拼多多",
+        "Pinduoduo",
+        "PDD"
+      ],
+      "category": "互联网",
+      "location": "上海"
+    },
+    "网易": {
+      "standard": "网易",
+      "aliases": [
+        "网易",
+        "NetEase"
+      ],
+      "category": "互联网",
+      "location": "杭州"
+    },
+    "小米": {
+      "standard": "小米",
+      "aliases": [
+        "小米",
+        "Xiaomi",
+        "小米科技"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "快手": {
+      "standard": "快手",
+      "aliases": [
+        "快手",
+        "Kuaishou"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "滴滴出行": {
+      "standard": "滴滴出行",
+      "aliases": [
+        "滴滴出行",
+        "滴滴",
+        "DiDi"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "携程": {
+      "standard": "携程",
+      "aliases": [
+        "携程",
+        "Ctrip",
+        "Trip.com"
+      ],
+      "category": "互联网",
+      "location": "上海"
+    },
+    "B站": {
+      "standard": "B站",
+      "aliases": [
+        "B站",
+        "哔哩哔哩",
+        "Bilibili"
+      ],
+      "category": "互联网",
+      "location": "上海"
+    },
+    "小红书": {
+      "standard": "小红书",
+      "aliases": [
+        "小红书",
+        "RED",
+        "Xiaohongshu"
+      ],
+      "category": "互联网",
+      "location": "上海"
+    },
+    "知乎": {
+      "standard": "知乎",
+      "aliases": [
+        "知乎",
+        "Zhihu"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "华为": {
+      "standard": "华为",
+      "aliases": [
+        "华为",
+        "Huawei",
+        "华为技术"
+      ],
+      "category": "科技",
+      "location": "深圳"
+    },
+    "OPPO": {
+      "standard": "OPPO",
+      "aliases": [
+        "OPPO",
+        "欧珀"
+      ],
+      "category": "科技",
+      "location": "东莞"
+    },
+    "vivo": {
+      "standard": "vivo",
+      "aliases": [
+        "vivo",
+        "维沃"
+      ],
+      "category": "科技",
+      "location": "东莞"
+    },
+    "大疆": {
+      "standard": "大疆",
+      "aliases": [
+        "大疆",
+        "DJI",
+        "大疆创新"
+      ],
+      "category": "科技",
+      "location": "深圳"
+    },
+    "商汤科技": {
+      "standard": "商汤科技",
+      "aliases": [
+        "商汤科技",
+        "商汤",
+        "SenseTime"
+      ],
+      "category": "人工智能",
+      "location": "上海"
+    },
+    "旷视科技": {
+      "standard": "旷视科技",
+      "aliases": [
+        "旷视科技",
+        "旷视",
+        "Face++",
+        "Megvii"
+      ],
+      "category": "人工智能",
+      "location": "北京"
+    },
+    "科大讯飞": {
+      "standard": "科大讯飞",
+      "aliases": [
+        "科大讯飞",
+        "讯飞",
+        "iFlytek"
+      ],
+      "category": "人工智能",
+      "location": "合肥"
+    },
+    "蚂蚁集团": {
+      "standard": "蚂蚁集团",
+      "aliases": [
+        "蚂蚁集团",
+        "蚂蚁金服",
+        "Ant Group"
+      ],
+      "category": "金融科技",
+      "location": "杭州"
+    },
+    "微众银行": {
+      "standard": "微众银行",
+      "aliases": [
+        "微众银行",
+        "WeBank"
+      ],
+      "category": "金融科技",
+      "location": "深圳"
+    },
+    "陆金所": {
+      "standard": "陆金所",
+      "aliases": [
+        "陆金所",
+        "Lufax"
+      ],
+      "category": "金融科技",
+      "location": "上海"
+    },
+    "搜狐": {
+      "standard": "搜狐",
+      "aliases": [
+        "搜狐",
+        "Sohu"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "新浪": {
+      "standard": "新浪",
+      "aliases": [
+        "新浪",
+        "Sina",
+        "微博"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "爱奇艺": {
+      "standard": "爱奇艺",
+      "aliases": [
+        "爱奇艺",
+        "iQIYI"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "优酷": {
+      "standard": "优酷",
+      "aliases": [
+        "优酷",
+        "Youku"
+      ],
+      "category": "互联网",
+      "location": "杭州"
+    },
+    "唯品会": {
+      "standard": "唯品会",
+      "aliases": [
+        "唯品会",
+        "VIP",
+        "Vipshop"
+      ],
+      "category": "电商",
+      "location": "广州"
+    },
+    "苏宁易购": {
+      "standard": "苏宁易购",
+      "aliases": [
+        "苏宁易购",
+        "苏宁",
+        "Suning"
+      ],
+      "category": "电商",
+      "location": "南京"
+    },
+    "国美": {
+      "standard": "国美",
+      "aliases": [
+        "国美",
+        "Gome"
+      ],
+      "category": "电商",
+      "location": "北京"
+    },
+    "去哪儿": {
+      "standard": "去哪儿",
+      "aliases": [
+        "去哪儿",
+        "Qunar"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "同程旅行": {
+      "standard": "同程旅行",
+      "aliases": [
+        "同程旅行",
+        "同程",
+        "Tongcheng"
+      ],
+      "category": "互联网",
+      "location": "苏州"
+    },
+    "58同城": {
+      "standard": "58同城",
+      "aliases": [
+        "58同城",
+        "58",
+        "58.com"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "贝壳找房": {
+      "standard": "贝壳找房",
+      "aliases": [
+        "贝壳找房",
+        "贝壳",
+        "KE"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "链家": {
+      "standard": "链家",
+      "aliases": [
+        "链家",
+        "Lianjia"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "Boss直聘": {
+      "standard": "Boss直聘",
+      "aliases": [
+        "Boss直聘",
+        "BOSS直聘",
+        "Boss"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "猎聘": {
+      "standard": "猎聘",
+      "aliases": [
+        "猎聘",
+        "Liepin"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "智联招聘": {
+      "standard": "智联招聘",
+      "aliases": [
+        "智联招聘",
+        "智联",
+        "Zhaopin"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "前程无忧": {
+      "standard": "前程无忧",
+      "aliases": [
+        "前程无忧",
+        "51job"
+      ],
+      "category": "互联网",
+      "location": "上海"
+    },
+    "得物": {
+      "standard": "得物",
+      "aliases": [
+        "得物",
+        "Dewu",
+        "毒"
+      ],
+      "category": "电商",
+      "location": "上海"
+    },
+    "Keep": {
+      "standard": "Keep",
+      "aliases": [
+        "Keep"
+      ],
+      "category": "互联网",
+      "location": "北京"
+    },
+    "喜马拉雅": {
+      "standard": "喜马拉雅",
+      "aliases": [
+        "喜马拉雅",
+        "Ximalaya"
+      ],
+      "category": "互联网",
+      "location": "上海"
+    },
+    "荔枝": {
+      "standard": "荔枝",
+      "aliases": [
+        "荔枝",
+        "Lizhi"
+      ],
+      "category": "互联网",
+      "location": "广州"
+    },
+    "斗鱼": {
+      "standard": "斗鱼",
+      "aliases": [
+        "斗鱼",
+        "Douyu"
+      ],
+      "category": "互联网",
+      "location": "武汉"
+    },
+    "虎牙": {
+      "standard": "虎牙",
+      "aliases": [
+        "虎牙",
+        "Huya"
+      ],
+      "category": "互联网",
+      "location": "广州"
+    },
+    "完美世界": {
+      "standard": "完美世界",
+      "aliases": [
+        "完美世界",
+        "Perfect World"
+      ],
+      "category": "游戏",
+      "location": "北京"
+    },
+    "三七互娱": {
+      "standard": "三七互娱",
+      "aliases": [
+        "三七互娱",
+        "37Games"
+      ],
+      "category": "游戏",
+      "location": "广州"
+    },
+    "米哈游": {
+      "standard": "米哈游",
+      "aliases": [
+        "米哈游",
+        "miHoYo"
+      ],
+      "category": "游戏",
+      "location": "上海"
+    },
+    "莉莉丝": {
+      "standard": "莉莉丝",
+      "aliases": [
+        "莉莉丝",
+        "Lilith"
+      ],
+      "category": "游戏",
+      "location": "上海"
+    },
+    "心动网络": {
+      "standard": "心动网络",
+      "aliases": [
+        "心动网络",
+        "心动",
+        "XD"
+      ],
+      "category": "游戏",
+      "location": "上海"
+    },
+    "叠纸游戏": {
+      "standard": "叠纸游戏",
+      "aliases": [
+        "叠纸游戏",
+        "叠纸",
+        "Paper Games"
+      ],
+      "category": "游戏",
+      "location": "苏州"
+    },
+    "理想汽车": {
+      "standard": "理想汽车",
+      "aliases": [
+        "理想汽车",
+        "理想",
+        "Li Auto"
+      ],
+      "category": "新能源汽车",
+      "location": "北京"
+    },
+    "蔚来汽车": {
+      "standard": "蔚来汽车",
+      "aliases": [
+        "蔚来汽车",
+        "蔚来",
+        "NIO"
+      ],
+      "category": "新能源汽车",
+      "location": "合肥"
+    },
+    "小鹏汽车": {
+      "standard": "小鹏汽车",
+      "aliases": [
+        "小鹏汽车",
+        "小鹏",
+        "XPeng"
+      ],
+      "category": "新能源汽车",
+      "location": "广州"
+    },
+    "比亚迪": {
+      "standard": "比亚迪",
+      "aliases": [
+        "比亚迪",
+        "BYD"
+      ],
+      "category": "新能源汽车",
+      "location": "深圳"
+    },
+    "顺丰": {
+      "standard": "顺丰",
+      "aliases": [
+        "顺丰",
+        "SF Express",
+        "顺丰速运"
+      ],
+      "category": "物流",
+      "location": "深圳"
+    },
+    "菜鸟网络": {
+      "standard": "菜鸟网络",
+      "aliases": [
+        "菜鸟网络",
+        "菜鸟",
+        "Cainiao"
+      ],
+      "category": "物流",
+      "location": "杭州"
+    },
+    "安克创新": {
+      "standard": "安克创新",
+      "aliases": [
+        "安克创新",
+        "Anker",
+        "安克"
+      ],
+      "category": "消费电子",
+      "location": "深圳"
+    },
+    "美的": {
+      "standard": "美的",
+      "aliases": [
+        "美的",
+        "Midea",
+        "美的集团"
+      ],
+      "category": "家电",
+      "location": "佛山"
+    },
+    "格力": {
+      "standard": "格力",
+      "aliases": [
+        "格力",
+        "Gree",
+        "格力电器"
+      ],
+      "category": "家电",
+      "location": "珠海"
+    },
+    "海尔": {
+      "standard": "海尔",
+      "aliases": [
+        "海尔",
+        "Haier"
+      ],
+      "category": "家电",
+      "location": "青岛"
+    },
+    "TCL": {
+      "standard": "TCL",
+      "aliases": [
+        "TCL"
+      ],
+      "category": "家电",
+      "location": "深圳"
+    },
+    "联想": {
+      "standard": "联想",
+      "aliases": [
+        "联想",
+        "Lenovo"
+      ],
+      "category": "科技",
+      "location": "北京"
+    },
+    "Apple": {
+      "standard": "Apple",
+      "aliases": [
+        "Apple",
+        "苹果",
+        "AAPL"
+      ],
+      "category": "科技",
+      "location": "美国"
+    },
+    "Microsoft": {
+      "standard": "Microsoft",
+      "aliases": [
+        "Microsoft",
+        "微软",
+        "MSFT"
+      ],
+      "category": "科技",
+      "location": "美国"
+    },
+    "Google": {
+      "standard": "Google",
+      "aliases": [
+        "Google",
+        "谷歌",
+        "Alphabet",
+        "GOOGL",
+        "Google LLC"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Amazon": {
+      "standard": "Amazon",
+      "aliases": [
+        "Amazon",
+        "亚马逊",
+        "AMZN",
+        "AWS"
+      ],
+      "category": "电商",
+      "location": "美国"
+    },
+    "Meta": {
+      "standard": "Meta",
+      "aliases": [
+        "Meta",
+        "Facebook",
+        "脸书",
+        "FB"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Netflix": {
+      "standard": "Netflix",
+      "aliases": [
+        "Netflix",
+        "奈飞",
+        "NFLX"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Tesla": {
+      "standard": "Tesla",
+      "aliases": [
+        "Tesla",
+        "特斯拉",
+        "TSLA"
+      ],
+      "category": "新能源汽车",
+      "location": "美国"
+    },
+    "NVIDIA": {
+      "standard": "NVIDIA",
+      "aliases": [
+        "NVIDIA",
+        "英伟达",
+        "NVDA"
+      ],
+      "category": "科技",
+      "location": "美国"
+    },
+    "Adobe": {
+      "standard": "Adobe",
+      "aliases": [
+        "Adobe",
+        "奥多比",
+        "ADBE"
+      ],
+      "category": "软件",
+      "location": "美国"
+    },
+    "Salesforce": {
+      "standard": "Salesforce",
+      "aliases": [
+        "Salesforce",
+        "CRM"
+      ],
+      "category": "软件",
+      "location": "美国"
+    },
+    "Oracle": {
+      "standard": "Oracle",
+      "aliases": [
+        "Oracle",
+        "甲骨文",
+        "ORCL"
+      ],
+      "category": "软件",
+      "location": "美国"
+    },
+    "Intel": {
+      "standard": "Intel",
+      "aliases": [
+        "Intel",
+        "英特尔",
+        "INTC"
+      ],
+      "category": "科技",
+      "location": "美国"
+    },
+    "Cisco": {
+      "standard": "Cisco",
+      "aliases": [
+        "Cisco",
+        "思科",
+        "CSCO"
+      ],
+      "category": "科技",
+      "location": "美国"
+    },
+    "IBM": {
+      "standard": "IBM",
+      "aliases": [
+        "IBM",
+        "国际商业机器"
+      ],
+      "category": "科技",
+      "location": "美国"
+    },
+    "Uber": {
+      "standard": "Uber",
+      "aliases": [
+        "Uber",
+        "优步",
+        "UBER"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Airbnb": {
+      "standard": "Airbnb",
+      "aliases": [
+        "Airbnb",
+        "爱彼迎",
+        "ABNB"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Twitter": {
+      "standard": "Twitter",
+      "aliases": [
+        "Twitter",
+        "推特",
+        "X"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "LinkedIn": {
+      "standard": "LinkedIn",
+      "aliases": [
+        "LinkedIn",
+        "领英"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Snapchat": {
+      "standard": "Snapchat",
+      "aliases": [
+        "Snapchat",
+        "Snap",
+        "SNAP"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Pinterest": {
+      "standard": "Pinterest",
+      "aliases": [
+        "Pinterest",
+        "PINS"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Spotify": {
+      "standard": "Spotify",
+      "aliases": [
+        "Spotify",
+        "SPOT"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "Zoom": {
+      "standard": "Zoom",
+      "aliases": [
+        "Zoom",
+        "ZM"
+      ],
+      "category": "软件",
+      "location": "美国"
+    },
+    "Slack": {
+      "standard": "Slack",
+      "aliases": [
+        "Slack"
+      ],
+      "category": "软件",
+      "location": "美国"
+    },
+    "Shopify": {
+      "standard": "Shopify",
+      "aliases": [
+        "Shopify",
+        "SHOP"
+      ],
+      "category": "电商",
+      "location": "加拿大"
+    },
+    "PayPal": {
+      "standard": "PayPal",
+      "aliases": [
+        "PayPal",
+        "PYPL"
+      ],
+      "category": "金融科技",
+      "location": "美国"
+    },
+    "Square": {
+      "standard": "Square",
+      "aliases": [
+        "Square",
+        "Block",
+        "SQ"
+      ],
+      "category": "金融科技",
+      "location": "美国"
+    },
+    "Stripe": {
+      "standard": "Stripe",
+      "aliases": [
+        "Stripe"
+      ],
+      "category": "金融科技",
+      "location": "美国"
+    },
+    "Coinbase": {
+      "standard": "Coinbase",
+      "aliases": [
+        "Coinbase",
+        "COIN"
+      ],
+      "category": "金融科技",
+      "location": "美国"
+    },
+    "Robinhood": {
+      "standard": "Robinhood",
+      "aliases": [
+        "Robinhood",
+        "HOOD"
+      ],
+      "category": "金融科技",
+      "location": "美国"
+    },
+    "DoorDash": {
+      "standard": "DoorDash",
+      "aliases": [
+        "DoorDash",
+        "DASH"
+      ],
+      "category": "互联网",
+      "location": "美国"
+    },
+    "阿里集团-1688": {
+      "standard": "阿里集团-1688",
+      "aliases": [
+        "阿里集团-1688"
+      ]
+    },
+    "咪咕": {
+      "standard": "咪咕",
+      "aliases": [
+        "咪咕",
+        "咪咕文化科技有限公司"
+      ]
+    }
+  }
+}

@@ -1,0 +1,140 @@
+.resume-list-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+.resume-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.resume-list-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.resume-list-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.resume-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: var(--spacing-xs);
+}
+
+.resume-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    transition: all var(--transition-base);
+}
+
+.resume-item:hover {
+    transform: translateX(8px);
+}
+
+.resume-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.resume-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.resume-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.resume-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.resume-status {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    display: inline-block;
+    font-weight: 500;
+}
+
+.status-pending {
+    background: hsla(200, 60%, 50%, 0.15);
+    color: hsl(200, 60%, 60%);
+}
+
+.status-parsing {
+    background: hsla(45, 90%, 55%, 0.15);
+    color: hsl(45, 90%, 65%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-completed {
+    background: hsla(140, 60%, 50%, 0.15);
+    color: hsl(140, 60%, 60%);
+}
+
+.status-failed {
+    background: hsla(0, 70%, 55%, 0.15);
+    color: hsl(0, 70%, 65%);
+}
+
+.status-duplicate {
+    background: hsla(30, 80%, 55%, 0.15);
+    color: hsl(30, 80%, 65%);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.resume-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.spinner-small {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}

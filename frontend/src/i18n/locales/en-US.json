@@ -1,0 +1,169 @@
+{
+    "app_title": "HireSynapse",
+    "upload_area": {
+        "title": "Drag or Click to Upload Resumes",
+        "subtitle": "Support batch upload of PDF files",
+        "button": "Select Files"
+    },
+    "toolbar": {
+        "notion": "Notion Config",
+        "ai": "AI Config",
+        "dictionary": "Dictionary"
+    },
+    "language": {
+        "switch": "Switch Language",
+        "zh": "中文",
+        "en": "English"
+    },
+    "history": {
+        "title": "History",
+        "tooltip": "History",
+        "empty": "No history records",
+        "count": "Total {{count}} records",
+        "back": "Back",
+        "clear": "Clear History",
+        "clear_confirm": "Confirm Clear?",
+        "cancel": "Cancel"
+    },
+    "resume_list": {
+        "title": "Resume List",
+        "status": {
+            "pending": "Pending",
+            "parsing": "Parsing",
+            "completed": "Completed",
+            "failed": "Failed",
+            "duplicate": "Duplicate"
+        },
+        "actions": {
+            "start_parse": "Start Parse",
+            "review": "Review",
+            "import_all": "Import All",
+            "retry": "Retry",
+            "upload_more": "Upload More"
+        }
+    },
+    "review_page": {
+        "title": "Resume Review",
+        "pdf_preview": "PDF Preview",
+        "fields": {
+            "name": "Name",
+            "phone": "Phone",
+            "email": "Email",
+            "current_company": "Current Company",
+            "current_position": "Current Position",
+            "education": "Education",
+            "university": "University",
+            "graduation_year": "Graduation Year",
+            "location": "Location"
+        },
+        "duplicate_banner": {
+            "title": "Duplicate Detected",
+            "message": "This candidate already exists (Match: 100%)",
+            "view_notion": "View Notion",
+            "overwrite": "Overwrite"
+        },
+        "actions": {
+            "save_to_notion": "Save to Notion",
+            "save_to_dict": "Save to Dictionary",
+            "next": "Next",
+            "previous": "Previous"
+        }
+    },
+    "modals": {
+        "notion": {
+            "title": "Notion Configuration",
+            "token": "Integration Token",
+            "database": "Select Database",
+            "field_mapping": "Field Mapping",
+            "upload_attachment": "Upload Attachment to Notion",
+            "save": "Save Config"
+        },
+        "ai": {
+            "title": "AI Configuration",
+            "base_url": "Base URL",
+            "api_key": "API Key",
+            "model": "Model Selection",
+            "system_prompt": "System Prompt",
+            "save": "Save Config"
+        },
+        "dictionary": {
+            "title": "Dictionary Management",
+            "tabs": {
+                "company": "Companies",
+                "university": "Universities"
+            },
+            "columns": {
+                "alias": "Alias",
+                "standard": "Standard Name"
+            },
+            "actions": {
+                "add": "Add",
+                "import": "Import",
+                "export": "Export",
+                "delete": "Delete"
+            }
+        }
+    },
+    "messages": {
+        "success": {
+            "upload": "Upload successful",
+            "parse": "Parse successful",
+            "save": "Save successful",
+            "config_saved": "Configuration saved"
+        },
+        "error": {
+            "upload": "Upload failed",
+            "parse": "Parse failed",
+            "save": "Save failed",
+            "network": "Network error"
+        }
+    },
+    "toast": {
+        "upload": {
+            "failed": "{{name}} upload failed: {{error}}"
+        },
+        "parse": {
+            "complete": "Parse complete",
+            "failed": "{{name}} parse failed: {{error}}",
+            "loading": "Parsing resumes..."
+        },
+        "review": {
+            "not_found": "Resume not found",
+            "not_parsed": "Please parse the resume first",
+            "no_parsed": "No parsed resumes"
+        },
+        "notion": {
+            "config_required": "Please configure Notion settings first",
+            "config_incomplete": "Notion configuration incomplete, please reconfigure",
+            "save_success": "Save successful!\nNotion page ID: {{pageId}}",
+            "save_failed": "Save failed: {{error}}",
+            "update_success": "Update successful!\nNotion page updated",
+            "update_failed": "Update failed: {{error}}",
+            "no_link": "Notion record link not found"
+        },
+        "import": {
+            "loading": "Importing resumes...",
+            "success_single": "{{name}} imported successfully!",
+            "failed_single": "{{name}} import failed: {{error}}",
+            "all_success": "All {{count}} resumes imported successfully!",
+            "all_failed": "All {{count}} resumes failed! Failed resumes: {{names}}",
+            "partial": "Partial import complete. Success: {{success}}, Failed: {{failed}}. Failed resumes: {{names}}",
+            "no_completed": "No completed resumes to import"
+        },
+        "history": {
+            "delete_success": "Deleted {{name}}",
+            "delete_failed": "Delete {{name}} failed: {{error}}",
+            "clear_success": "History cleared",
+            "clear_failed": "Clear failed: {{error}}",
+            "clear_partial": "Some files failed to delete: {{count}}"
+        },
+        "dict": {
+            "no_value": "This field has no value",
+            "alias_exists": "Alias \"{{alias}}\" already exists, mapped to \"{{standard}}\"",
+            "save_success": "Mapping saved: \"{{alias}}\" → \"{{standard}}\""
+        },
+        "ai": {
+            "config_required": "Please configure AI settings first"
+        }
+    }
+}

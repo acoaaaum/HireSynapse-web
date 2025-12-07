@@ -1,0 +1,170 @@
+.dictionary-modal {
+    width: 800px;
+    max-height: 80vh;
+    padding: 0;
+}
+
+.dictionary-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 var(--spacing-lg);
+}
+
+.tab {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all var(--transition-base);
+}
+
+.tab:hover {
+    color: var(--text-primary);
+}
+
+.tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.dictionary-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.add-entry {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex: 1;
+    min-width: 300px;
+}
+
+.add-entry input {
+    flex: 1;
+}
+
+.import-export {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* 统计信息 */
+.dictionary-stats {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.dictionary-table {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.dictionary-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dictionary-table thead {
+    position: sticky;
+    top: 0;
+    background: var(--bg-tertiary);
+    z-index: 1;
+}
+
+.dictionary-table th,
+.dictionary-table td {
+    padding: var(--spacing-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dictionary-table th {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.dictionary-table td {
+    color: var(--text-secondary);
+}
+
+.dictionary-table tr:hover {
+    background: var(--bg-tertiary);
+}
+
+/* 编辑状态的行 */
+.dictionary-table tr.editing {
+    background: var(--bg-tertiary);
+}
+
+.dictionary-table tr.editing input {
+    width: 100%;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+}
+
+/* 统一的操作按钮样式 */
+.row-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    justify-content: center;
+}
+
+.btn-action {
+    padding: 0.25rem 0.75rem;
+    background: none;
+    border: 1px solid;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-base);
+}
+
+.btn-action.btn-edit {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-action.btn-edit:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-action.btn-delete {
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.btn-action.btn-delete:hover {
+    background: var(--error);
+    color: white;
+}
+
+.btn-action.btn-save {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.btn-action.btn-save:hover {
+    background: var(--success);
+    color: white;
+}
+
+.btn-action.btn-cancel {
+    border-color: var(--text-tertiary);
+    color: var(--text-secondary);
+}
+
+.btn-action.btn-cancel:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--text-secondary);
+}

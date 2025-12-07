@@ -1,0 +1,169 @@
+{
+    "app_title": "HireSynapse",
+    "upload_area": {
+        "title": "拖拽或点击上传简历",
+        "subtitle": "支持批量上传 PDF 文件",
+        "button": "选择文件"
+    },
+    "toolbar": {
+        "notion": "Notion 配置",
+        "ai": "AI 配置",
+        "dictionary": "字典管理"
+    },
+    "language": {
+        "switch": "切换语言",
+        "zh": "中文",
+        "en": "English"
+    },
+    "history": {
+        "title": "历史记录",
+        "tooltip": "历史记录",
+        "empty": "暂无历史记录",
+        "count": "共 {{count}} 条",
+        "back": "返回",
+        "clear": "清空历史",
+        "clear_confirm": "确认清空?",
+        "cancel": "取消"
+    },
+    "resume_list": {
+        "title": "简历列表",
+        "status": {
+            "pending": "待解析",
+            "parsing": "解析中",
+            "completed": "已完成",
+            "failed": "解析失败",
+            "duplicate": "重复"
+        },
+        "actions": {
+            "start_parse": "开始解析",
+            "review": "校对",
+            "import_all": "一键导入",
+            "retry": "重试",
+            "upload_more": "继续上传"
+        }
+    },
+    "review_page": {
+        "title": "简历校对",
+        "pdf_preview": "PDF 预览",
+        "fields": {
+            "name": "姓名",
+            "phone": "电话",
+            "email": "邮箱",
+            "current_company": "当前公司",
+            "current_position": "当前职位",
+            "education": "最高学历",
+            "university": "毕业院校",
+            "graduation_year": "本科毕业时间",
+            "location": "现居地点"
+        },
+        "duplicate_banner": {
+            "title": "检测到重复候选人",
+            "message": "库中已存在该候选人(匹配度: 100%)",
+            "view_notion": "查看 Notion 记录",
+            "overwrite": "覆盖更新"
+        },
+        "actions": {
+            "save_to_notion": "保存到 Notion",
+            "save_to_dict": "保存到字典",
+            "next": "下一个",
+            "previous": "上一个"
+        }
+    },
+    "modals": {
+        "notion": {
+            "title": "Notion 配置",
+            "token": "Integration Token",
+            "database": "选择数据库",
+            "field_mapping": "字段映射",
+            "upload_attachment": "上传附件到 Notion",
+            "save": "保存配置"
+        },
+        "ai": {
+            "title": "AI 配置",
+            "base_url": "Base URL",
+            "api_key": "API Key",
+            "model": "模型选择",
+            "system_prompt": "System Prompt",
+            "save": "保存配置"
+        },
+        "dictionary": {
+            "title": "字典管理",
+            "tabs": {
+                "company": "公司库",
+                "university": "院校库"
+            },
+            "columns": {
+                "alias": "别名",
+                "standard": "标准名称"
+            },
+            "actions": {
+                "add": "添加",
+                "import": "导入",
+                "export": "导出",
+                "delete": "删除"
+            }
+        }
+    },
+    "messages": {
+        "success": {
+            "upload": "上传成功",
+            "parse": "解析成功",
+            "save": "保存成功",
+            "config_saved": "配置已保存"
+        },
+        "error": {
+            "upload": "上传失败",
+            "parse": "解析失败",
+            "save": "保存失败",
+            "network": "网络错误"
+        }
+    },
+    "toast": {
+        "upload": {
+            "failed": "{{name}} 上传失败: {{error}}"
+        },
+        "parse": {
+            "complete": "解析完成",
+            "failed": "{{name}} 解析失败: {{error}}",
+            "loading": "正在解析简历..."
+        },
+        "review": {
+            "not_found": "简历不存在",
+            "not_parsed": "请先解析简历",
+            "no_parsed": "没有已解析的简历"
+        },
+        "notion": {
+            "config_required": "请先配置Notion设置",
+            "config_incomplete": "Notion配置不完整,请重新配置",
+            "save_success": "保存成功!\nNotion页面ID: {{pageId}}",
+            "save_failed": "保存失败: {{error}}",
+            "update_success": "更新成功!\nNotion页面已更新",
+            "update_failed": "更新失败: {{error}}",
+            "no_link": "未找到Notion记录链接"
+        },
+        "import": {
+            "loading": "正在导入简历...",
+            "success_single": "{{name}} 导入成功!",
+            "failed_single": "{{name}} 导入失败: {{error}}",
+            "all_success": "所有 {{count}} 份简历导入成功!",
+            "all_failed": "所有 {{count}} 份简历导入失败! 失败简历: {{names}}",
+            "partial": "部分简历导入完成. 成功: {{success}}, 失败: {{failed}}. 失败简历: {{names}}",
+            "no_completed": "没有可导入的已完成简历"
+        },
+        "history": {
+            "delete_success": "已删除 {{name}}",
+            "delete_failed": "删除 {{name}} 失败: {{error}}",
+            "clear_success": "历史记录已清空",
+            "clear_failed": "清空失败: {{error}}",
+            "clear_partial": "部分文件删除失败: {{count}}个"
+        },
+        "dict": {
+            "no_value": "该字段没有值",
+            "alias_exists": "别名\"{{alias}}\"已存在,映射到\"{{standard}}\"",
+            "save_success": "已保存映射: \"{{alias}}\" → \"{{standard}}\""
+        },
+        "ai": {
+            "config_required": "请先配置AI设置"
+        }
+    }
+}

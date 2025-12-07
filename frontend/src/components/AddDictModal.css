@@ -1,0 +1,234 @@
+.add-dict-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.add-dict-content {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.add-dict-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-dict-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.add-dict-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.add-dict-close:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.add-dict-body {
+    margin-bottom: 20px;
+}
+
+.add-dict-field {
+    margin-bottom: 16px;
+}
+
+.add-dict-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.add-dict-field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.add-dict-field input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.add-dict-field .help-text {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.alias-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.alias-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 16px;
+    font-size: 13px;
+}
+
+.alias-tag button {
+    background: none;
+    border: none;
+    color: #2e7d32;
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.alias-tag button:hover {
+    color: #1b5e20;
+}
+
+.add-dict-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.add-dict-footer button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.add-dict-footer .btn-cancel {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #666;
+}
+
+.add-dict-footer .btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.add-dict-footer .btn-save {
+    background: #4CAF50;
+    border: none;
+    color: white;
+}
+
+.add-dict-footer .btn-save:hover {
+    background: #45a049;
+}
+
+.add-dict-footer .btn-save:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.suggestions-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+    background: #f5f5f5;
+}
+
+.suggestion-item:not(:last-child) {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mapping-preview {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+.preview-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.preview-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.preview-alias {
+    padding: 6px 12px;
+    background: #e3f2fd;
+    color: #1976d2;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.preview-arrow {
+    color: #999;
+    font-size: 18px;
+}
+
+.preview-standard {
+    padding: 6px 12px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 4px;
+    font-weight: 500;
+}

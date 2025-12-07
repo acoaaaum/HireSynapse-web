@@ -1,0 +1,387 @@
+{
+  "universities": {
+    "清华大学": {
+      "standard": "清华大学",
+      "aliases": [
+        "THU",
+        "Tsinghua",
+        "Tsinghua Univ"
+      ]
+    },
+    "北京大学": {
+      "standard": "北京大学",
+      "aliases": [
+        "PKU",
+        "Peking",
+        "Peking Univ"
+      ]
+    },
+    "复旦大学": {
+      "standard": "复旦大学",
+      "aliases": [
+        "Fudan",
+        "Fudan Univ"
+      ]
+    },
+    "上海交通大学": {
+      "standard": "上海交通大学",
+      "aliases": [
+        "SJTU",
+        "Shanghai Jiao Tong"
+      ]
+    },
+    "浙江大学": {
+      "standard": "浙江大学",
+      "aliases": [
+        "ZJU",
+        "Zhejiang",
+        "Zhejiang Univ"
+      ]
+    },
+    "南京大学": {
+      "standard": "南京大学",
+      "aliases": [
+        "NJU",
+        "Nanjing",
+        "Nanjing Univ"
+      ]
+    },
+    "中国科学技术大学": {
+      "standard": "中国科学技术大学",
+      "aliases": [
+        "USTC",
+        "中科大"
+      ]
+    },
+    "哈尔滨工业大学": {
+      "standard": "哈尔滨工业大学",
+      "aliases": [
+        "HIT",
+        "Harbin Institute of Technology",
+        "哈工大"
+      ]
+    },
+    "北京航空航天大学": {
+      "standard": "北京航空航天大学",
+      "aliases": [
+        "BUAA",
+        "Beihang",
+        "北航"
+      ]
+    },
+    "同济大学": {
+      "standard": "同济大学",
+      "aliases": [
+        "Tongji",
+        "Tongji Univ"
+      ]
+    },
+    "南开大学": {
+      "standard": "南开大学",
+      "aliases": [
+        "Nankai",
+        "Nankai Univ"
+      ]
+    },
+    "天津大学": {
+      "standard": "天津大学",
+      "aliases": [
+        "Tianjin",
+        "Tianjin Univ"
+      ]
+    },
+    "武汉大学": {
+      "standard": "武汉大学",
+      "aliases": [
+        "WHU",
+        "Wuhan",
+        "Wuhan Univ"
+      ]
+    },
+    "华中科技大学": {
+      "standard": "华中科技大学",
+      "aliases": [
+        "HUST",
+        "Huazhong",
+        "华科"
+      ]
+    },
+    "厦门大学": {
+      "standard": "厦门大学",
+      "aliases": [
+        "XMU",
+        "Xiamen",
+        "Xiamen Univ"
+      ]
+    },
+    "中山大学": {
+      "standard": "中山大学",
+      "aliases": [
+        "SYSU",
+        "Sun Yat-sen",
+        "中大"
+      ]
+    },
+    "四川大学": {
+      "standard": "四川大学",
+      "aliases": [
+        "SCU",
+        "Sichuan",
+        "Sichuan Univ"
+      ]
+    },
+    "中国人民大学": {
+      "standard": "中国人民大学",
+      "aliases": [
+        "RUC",
+        "Renmin",
+        "人大"
+      ]
+    },
+    "北京师范大学": {
+      "standard": "北京师范大学",
+      "aliases": [
+        "BNU",
+        "Beijing Normal",
+        "北师大"
+      ]
+    },
+    "麻省理工学院": {
+      "standard": "麻省理工学院",
+      "aliases": [
+        "MIT",
+        "Massachusetts Institute of Technology"
+      ]
+    },
+    "斯坦福大学": {
+      "standard": "斯坦福大学",
+      "aliases": [
+        "Stanford",
+        "Stanford Univ"
+      ]
+    },
+    "哈佛大学": {
+      "standard": "哈佛大学",
+      "aliases": [
+        "Harvard",
+        "Harvard Univ"
+      ]
+    },
+    "加州理工学院": {
+      "standard": "加州理工学院",
+      "aliases": [
+        "California Institute of Technology",
+        "Caltech"
+      ]
+    },
+    "牛津大学": {
+      "standard": "牛津大学",
+      "aliases": [
+        "Oxford",
+        "Oxford Univ"
+      ]
+    },
+    "剑桥大学": {
+      "standard": "剑桥大学",
+      "aliases": [
+        "Cambridge",
+        "Cambridge Univ"
+      ]
+    },
+    "苏黎世联邦理工学院": {
+      "standard": "苏黎世联邦理工学院",
+      "aliases": [
+        "ETH Zurich"
+      ]
+    },
+    "伦敦大学学院": {
+      "standard": "伦敦大学学院",
+      "aliases": [
+        "UCL",
+        "University College London"
+      ]
+    },
+    "帝国理工学院": {
+      "standard": "帝国理工学院",
+      "aliases": [
+        "Imperial",
+        "Imperial College London"
+      ]
+    },
+    "芝加哥大学": {
+      "standard": "芝加哥大学",
+      "aliases": [
+        "Chicago",
+        "Univ of Chicago"
+      ]
+    },
+    "普林斯顿大学": {
+      "standard": "普林斯顿大学",
+      "aliases": [
+        "Princeton",
+        "Princeton Univ"
+      ]
+    },
+    "耶鲁大学": {
+      "standard": "耶鲁大学",
+      "aliases": [
+        "Yale",
+        "Yale Univ"
+      ]
+    },
+    "哥伦比亚大学": {
+      "standard": "哥伦比亚大学",
+      "aliases": [
+        "Columbia",
+        "Columbia Univ"
+      ]
+    },
+    "宾夕法尼亚大学": {
+      "standard": "宾夕法尼亚大学",
+      "aliases": [
+        "Penn",
+        "UPenn"
+      ]
+    },
+    "康奈尔大学": {
+      "standard": "康奈尔大学",
+      "aliases": [
+        "Cornell",
+        "Cornell Univ"
+      ]
+    },
+    "加州大学伯克利分校": {
+      "standard": "加州大学伯克利分校",
+      "aliases": [
+        "Berkeley",
+        "UC Berkeley"
+      ]
+    },
+    "加州大学洛杉矶分校": {
+      "standard": "加州大学洛杉矶分校",
+      "aliases": [
+        "UCLA",
+        "Univ of California Los Angeles"
+      ]
+    },
+    "加州大学圣地亚哥分校": {
+      "standard": "加州大学圣地亚哥分校",
+      "aliases": [
+        "UC San Diego",
+        "UCSD"
+      ]
+    },
+    "密歇根大学": {
+      "standard": "密歇根大学",
+      "aliases": [
+        "Michigan",
+        "Univ of Michigan"
+      ]
+    },
+    "西北大学": {
+      "standard": "西北大学",
+      "aliases": [
+        "Northwestern",
+        "Northwestern Univ"
+      ]
+    },
+    "杜克大学": {
+      "standard": "杜克大学",
+      "aliases": [
+        "Duke",
+        "Duke Univ"
+      ]
+    },
+    "约翰霍普金斯大学": {
+      "standard": "约翰霍普金斯大学",
+      "aliases": [
+        "JHU",
+        "Johns Hopkins"
+      ]
+    },
+    "卡内基梅隆大学": {
+      "standard": "卡内基梅隆大学",
+      "aliases": [
+        "CMU",
+        "Carnegie Mellon"
+      ]
+    },
+    "纽约大学": {
+      "standard": "纽约大学",
+      "aliases": [
+        "NYU",
+        "New York Univ"
+      ]
+    },
+    "多伦多大学": {
+      "standard": "多伦多大学",
+      "aliases": [
+        "Toronto",
+        "Univ of Toronto"
+      ]
+    },
+    "不列颠哥伦比亚大学": {
+      "standard": "不列颠哥伦比亚大学",
+      "aliases": [
+        "UBC",
+        "Univ of British Columbia"
+      ]
+    },
+    "麦吉尔大学": {
+      "standard": "麦吉尔大学",
+      "aliases": [
+        "McGill",
+        "McGill Univ"
+      ]
+    },
+    "墨尔本大学": {
+      "standard": "墨尔本大学",
+      "aliases": [
+        "Melbourne",
+        "Univ of Melbourne"
+      ]
+    },
+    "悉尼大学": {
+      "standard": "悉尼大学",
+      "aliases": [
+        "Sydney",
+        "Univ of Sydney"
+      ]
+    },
+    "澳大利亚国立大学": {
+      "standard": "澳大利亚国立大学",
+      "aliases": [
+        "ANU",
+        "Australian National Univ"
+      ]
+    },
+    "新加坡国立大学": {
+      "standard": "新加坡国立大学",
+      "aliases": [
+        "NUS",
+        "National Univ of Singapore"
+      ]
+    },
+    "南洋理工大学": {
+      "standard": "南洋理工大学",
+      "aliases": [
+        "NTU",
+        "Nanyang Technological Univ"
+      ]
+    },
+    "东京大学": {
+      "standard": "东京大学",
+      "aliases": [
+        "Tokyo",
+        "Univ of Tokyo"
+      ]
+    },
+    "京都大学": {
+      "standard": "京都大学",
+      "aliases": [
+        "Kyoto",
+        "Kyoto Univ"
+      ]
+    }
+  }
+}

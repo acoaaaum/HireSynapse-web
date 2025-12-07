@@ -1,0 +1,86 @@
+.ai-modal {
+    width: 700px;
+    padding: 0;
+}
+
+.model-selector {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.model-selector select {
+    flex: 1;
+}
+
+.model-count {
+    margin-top: var(--spacing-xs);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.hint-text {
+    margin-top: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border-left: 3px solid var(--info);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.prompt-textarea {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+    min-height: 200px;
+}
+
+/* 测试连接按钮 */
+.test-connection-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.test-connection-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.test-result {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    animation: slideDown 0.3s ease;
+}
+
+.test-result.success {
+    background: hsla(140, 60%, 50%, 0.15);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.test-result.error {
+    background: hsla(0, 70%, 55%, 0.15);
+    color: var(--error);
+    border: 1px solid var(--error);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

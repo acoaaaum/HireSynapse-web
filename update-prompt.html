@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新AI配置 - System Prompt</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .result.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .result.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔧 更新AI配置 - System Prompt</h1>
+
+        <div class="info">
+            <strong>说明:</strong><br>
+            点击下方按钮将更新已保存的AI配置中的System Prompt,添加关于本科毕业年份的重要说明。
+        </div>
+
+        <button onclick="updateSystemPrompt()">更新System Prompt</button>
+
+        <div id="result" class="result"></div>
+
+        <h3 style="margin-top: 30px;">新的System Prompt内容:</h3>
+        <pre id="promptPreview"></pre>
+    </div>
+
+    <script>
+        const newSystemPrompt = `你是一个专业的简历解析助手。请从提供的简历文本中提取以下信息,并以JSON格式返回:
+
+{
+  "name": "姓名",
+  "phone": "电话号码(保留原始格式)",
+  "email": "邮箱地址",
+  "current_company": "当前公司名称(全称)",
+  "current_position": "当前职位",
+  "education": "最高学历(本科/硕士/博士)",
+  "university": "毕业院校(全称)",
+  "graduation_year": "本科毕业年份(仅年份,如2020)",
+  "location": "现居地点(城市或国家)"
+}
+
+注意:
+1. 如果某个字段在简历中找不到,请返回空字符串
+2. 保持公司和院校的原始名称,不要自行翻译或简化
+3. 电话号码保留原始格式,包括所有符号
+4. 现居地点尽可能提取详细信息
+5. **重要**: graduation_year必须是本科毕业年份,即使候选人有硕士或博士学历,也要提取本科的毕业年份,而不是最高学历的毕业年份`;
+
+        // 显示预览
+        document.getElementById('promptPreview').textContent = newSystemPrompt;
+
+        function updateSystemPrompt() {
+            const resultDiv = document.getElementById('result');
+
+            try {
+                // 获取当前配置
+                const configStr = localStorage.getItem('aiConfig');
+
+                if (!configStr) {
+                    resultDiv.className = 'result error';
+                    resultDiv.textContent = '❌ 未找到AI配置,请先在应用中配置AI设置';
+                    return;
+                }
+
+                const config = JSON.parse(configStr);
+
+                // 更新System Prompt
+                config.systemPrompt = newSystemPrompt;
+
+                // 保存回localStorage
+                localStorage.setItem('aiConfig', JSON.stringify(config));
+
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+                    <strong>✅ 更新成功!</strong><br><br>
+                    System Prompt已更新,包含以下关键说明:<br>
+                    • graduation_year必须是本科毕业年份<br>
+                    • 即使候选人有硕士或博士学历,也要提取本科的毕业年份<br><br>
+                    <strong>下一步:</strong> 刷新应用页面,打开AI配置查看更新后的提示词
+                `;
+
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = '❌ 更新失败: ' + error.message;
+            }
+        }
+    </script>
+</body>
+
+</html>
