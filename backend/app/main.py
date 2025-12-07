@@ -14,7 +14,11 @@ app = FastAPI(
 # CORS 配置
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "*",  # 临时允许所有域名,部署后替换为具体的Vercel域名
+        # "https://your-app.vercel.app",  # 部署Vercel后取消注释并替换
+        # "http://localhost:3000",  # 本地开发
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
