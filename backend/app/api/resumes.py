@@ -167,6 +167,8 @@ async def delete_file(file_path: str):
 async def parse_resume(
     file_path: str = Form(...),
     ai_config: str = Form(...),
+    generate_summary: bool = Form(False),
+    summary_prompt: str = Form(None),
     dict_service: DictionaryService = Depends(get_dict_service)
 ):
     """解析简历"""
@@ -208,10 +210,23 @@ async def parse_resume(
         if parsed_data.get("location"):
             parsed_data["location"] = data_cleaner.clean_location(parsed_data["location"])
         
+        # 生成简历总结(如果启用)
+        if generate_summary:
+            try:
+                summary = llm_service.generate_resume_summary(text, summary_prompt)
+                parsed_data["summary"] = summary
+            except Exception as e:
+                print(f"生成简历总结失败: {e}")
+                import traceback
+                traceback.print_exc()
+                # 总结生成失败不影响主流程,只记录错误
+                parsed_data["summary"] = ""
+        
         return {
             "success": True,
             "data": parsed_data,
-            "mode": mode
+            "mode": mode,
+            "raw_text": text  # 返回原始文本供前端使用
         }
         
     except Exception as e:
@@ -260,7 +275,9 @@ async def save_to_notion(
     data: str = Form(...),
     field_mapping: str = Form(...),
     pdf_file_path: str = Form(None),
-    attachment_field: str = Form(None)
+    attachment_field: str = Form(None),
+    pdf_text_content: str = Form(None),
+    embed_pdf_content: bool = Form(False)
 ):
     """保存简历到 Notion"""
     try:
@@ -280,57 +297,68 @@ async def save_to_notion(
             database_id=database_id
         )
         
-        # 创建页面,传递attachment_field
-        result = notion_service.create_page(
+        # 创建页面
+        page = notion_service.create_page(
             database_id=database_id,
             properties=properties,
-            pdf_file_path=pdf_file_path,
-            attachment_field=attachment_field if attachment_field else None
+            pdf_file_path=Path(pdf_file_path) if pdf_file_path else None,
+            attachment_field=attachment_field,
+            pdf_text_content=pdf_text_content,
+            embed_pdf_content=embed_pdf_content
         )
         
-        return result
+        return page
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/update-notion-page")
-async def update_notion_page(
+@router.post("/update-notion")
+async def update_notion(
     page_id: str = Form(...),
-    database_id: str = Form(...),
     notion_token: str = Form(...),
     data: str = Form(...),
     field_mapping: str = Form(...),
     pdf_file_path: str = Form(None),
-    attachment_field: str = Form(None)
+    attachment_field: str = Form(None),
+    pdf_text_content: str = Form(None),
+    embed_pdf_content: bool = Form(False)
 ):
-    """更新Notion页面"""
+    """更新 Notion 页面"""
     try:
         import json
+        import os # Added import for os
+        
+        notion_service = NotionService(token=notion_token)
         
         # 解析数据
         resume_data = json.loads(data)
         mapping = json.loads(field_mapping)
         
-        # 初始化 Notion 服务
-        notion_service = NotionService(notion_token)
-        
         # 格式化属性
         properties = notion_service.format_properties(
             data=resume_data,
             field_mapping=mapping,
-            database_id=database_id
+            database_id=""  # update时不需要database_id来format
         )
+        
+        # 处理文件路径
+        full_path = None
+        if pdf_file_path:
+            # Assuming UPLOAD_DIR is defined globally or imported
+            full_path = os.path.join(UPLOAD_DIR, pdf_file_path)
         
         # 更新页面
-        result = notion_service.update_page(
+        page = notion_service.update_page(
             page_id=page_id,
             properties=properties,
-            pdf_file_path=pdf_file_path,
-            attachment_field=attachment_field if attachment_field else None
+            pdf_file_path=full_path if pdf_file_path else None,
+            attachment_field=attachment_field,
+            pdf_text_content=pdf_text_content,
+            embed_pdf_content=embed_pdf_content
         )
         
-        return result
+        return page # Changed 'result' to 'page' for consistency with the new code
         
     except Exception as e:
         print(f"更新Notion页面错误: {e}")

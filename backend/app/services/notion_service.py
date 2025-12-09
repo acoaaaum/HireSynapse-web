@@ -165,14 +165,36 @@ class NotionService:
             print(f"去重检查失败: {e}")
             import traceback
             traceback.print_exc()
-            return None
+            return {"duplicate": False}
+    
+    @staticmethod
+    def _split_text_into_chunks(text: str, chunk_size: int = 2000) -> list:
+        """
+        将长文本分割为多个块
+        
+        Args:
+            text: 要分割的文本
+            chunk_size: 每块的最大字符数
+            
+        Returns:
+            List[文本块]
+        """
+        if not text:
+            return []
+        
+        chunks = []
+        for i in range(0, len(text), chunk_size):
+            chunks.append(text[i:i + chunk_size])
+        return chunks
     
     def create_page(
         self,
         database_id: str,
         properties: Dict[str, Any],
         pdf_file_path: Optional[str] = None,
-        attachment_field: Optional[str] = None
+        attachment_field: Optional[str] = None,
+        pdf_text_content: Optional[str] = None,
+        embed_pdf_content: bool = False
     ) -> Dict[str, Any]:
         """
         创建 Notion 页面
@@ -214,27 +236,68 @@ class NotionService:
             
             page_id = page.get("id")
             
+            # 准备要添加的内容块
+            children_blocks = []
+            
             # 如果有file_upload_id,添加PDF块到页面正文
             if file_upload_id and pdf_file_path:
+                children_blocks.append({
+                    "object": "block",
+                    "type": "pdf",
+                    "pdf": {
+                        "type": "file_upload",
+                        "file_upload": {
+                            "id": file_upload_id
+                        }
+                    }
+                })
+            
+            # 如果启用了PDF内容嵌入,添加文本内容代码块
+            if embed_pdf_content and pdf_text_content:
+                try:
+                    # 添加标题
+                    children_blocks.append({
+                        "object": "block",
+                        "type": "heading_2",
+                        "heading_2": {
+                            "rich_text": [{
+                                "type": "text",
+                                "text": {"content": "简历原始内容"}
+                            }]
+                        }
+                    })
+                    
+                    # 分块处理文本(Notion限制每个text块2000字符)
+                    text_chunks = self._split_text_into_chunks(pdf_text_content, 2000)
+                    
+                    for chunk in text_chunks:
+                        children_blocks.append({
+                            "object": "block",
+                            "type": "code",
+                            "code": {
+                                "rich_text": [{
+                                    "type": "text",
+                                    "text": {"content": chunk}
+                                }],
+                                "language": "latex"
+                            }
+                        })
+                    
+                    print(f"✅ PDF文本内容已添加({len(text_chunks)}个代码块)")
+                except Exception as e:
+                    print(f"添加PDF文本内容失败: {e}")
+            
+            # 一次性添加所有块
+            if children_blocks:
                 try:
                     self.client.blocks.children.append(
                         block_id=page_id,
-                        children=[
-                            {
-                                "object": "block",
-                                "type": "pdf",
-                                "pdf": {
-                                    "type": "file_upload",
-                                    "file_upload": {
-                                        "id": file_upload_id
-                                    }
-                                }
-                            }
-                        ]
+                        children=children_blocks
                     )
-                    print(f"✅ PDF已嵌入到页面正文")
+                    if file_upload_id:
+                        print(f"✅ PDF已嵌入到页面正文")
                 except Exception as e:
-                    print(f"添加PDF块失败: {e}")
+                    print(f"添加内容块失败: {e}")
             
             return {
                 "id": page_id,
@@ -251,7 +314,9 @@ class NotionService:
         page_id: str,
         properties: Dict[str, Any],
         pdf_file_path: Optional[str] = None,
-        attachment_field: Optional[str] = None
+        attachment_field: Optional[str] = None,
+        pdf_text_content: Optional[str] = None,
+        embed_pdf_content: bool = False
     ) -> Dict[str, Any]:
         """
         更新 Notion 页面
@@ -297,27 +362,68 @@ class NotionService:
                 properties=properties
             )
             
+            # 准备要添加的内容块
+            children_blocks = []
+            
             # 如果有file_upload_id,添加PDF块到页面正文
             if file_upload_id and pdf_file_path:
+                children_blocks.append({
+                    "object": "block",
+                    "type": "pdf",
+                    "pdf": {
+                        "type": "file_upload",
+                        "file_upload": {
+                            "id": file_upload_id
+                        }
+                    }
+                })
+            
+            # 如果启用了PDF内容嵌入,添加文本内容代码块
+            if embed_pdf_content and pdf_text_content:
+                try:
+                    # 添加标题
+                    children_blocks.append({
+                        "object": "block",
+                        "type": "heading_2",
+                        "heading_2": {
+                            "rich_text": [{
+                                "type": "text",
+                                "text": {"content": "简历原始内容"}
+                            }]
+                        }
+                    })
+                    
+                    # 分块处理文本
+                    text_chunks = self._split_text_into_chunks(pdf_text_content, 2000)
+                    
+                    for chunk in text_chunks:
+                        children_blocks.append({
+                            "object": "block",
+                            "type": "code",
+                            "code": {
+                                "rich_text": [{
+                                    "type": "text",
+                                    "text": {"content": chunk}
+                                }],
+                                "language": "latex"
+                            }
+                        })
+                    
+                    print(f"✅ PDF文本内容已添加({len(text_chunks)}个代码块)")
+                except Exception as e:
+                    print(f"添加PDF文本内容失败: {e}")
+            
+            # 一次性添加所有块
+            if children_blocks:
                 try:
                     self.client.blocks.children.append(
                         block_id=page_id,
-                        children=[
-                            {
-                                "object": "block",
-                                "type": "pdf",
-                                "pdf": {
-                                    "type": "file_upload",
-                                    "file_upload": {
-                                        "id": file_upload_id
-                                    }
-                                }
-                            }
-                        ]
+                        children=children_blocks
                     )
-                    print(f"✅ PDF已嵌入到页面正文")
+                    if file_upload_id:
+                        print(f"✅ PDF已嵌入到页面正文")
                 except Exception as e:
-                    print(f"添加PDF块失败: {e}")
+                    print(f"添加内容块失败: {e}")
             
             print(f"✅ 页面已更新: {page_id}")
             return {

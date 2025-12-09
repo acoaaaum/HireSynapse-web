@@ -112,13 +112,18 @@ function HistoryPage() {
 
                 if (response.ok) {
                     const result = await response.json()
-                    console.log('清空结果:', result)
+                    toast.success(t('toast.history.clear_success'))
+
+                    // 清空本地状态
                     if (result.failed_files && result.failed_files.length > 0) {
                         toast.warning(t('toast.history.clear_partial', { count: result.failed_files.length }))
                     }
                 } else {
                     throw new Error('清空文件失败')
                 }
+            } else {
+                // 如果没有文件路径，直接清空localStorage并显示成功消息
+                toast.success(t('toast.history.clear_success'))
             }
 
             // 清空localStorage

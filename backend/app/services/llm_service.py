@@ -22,12 +22,13 @@ class LLMService:
             genai.configure(api_key=api_key)
             self.client = genai.GenerativeModel(model)
         else:
-            # 创建自定义httpx客户端,避免proxies参数问题
-            http_client = httpx.Client(timeout=30.0)
+            # 创建自定义httpx客户端,增加超时时间
+            http_client = httpx.Client(timeout=60.0)  # 增加到60秒
             self.client = openai.OpenAI(
                 api_key=api_key,
                 base_url=base_url,
-                http_client=http_client
+                http_client=http_client,
+                timeout=60.0  # 设置OpenAI客户端超时
             )
     
     def parse_resume_text(self, text: str) -> Dict[str, Any]:
@@ -157,6 +158,133 @@ class LLMService:
         except Exception as e:
             print(f"Gemini Vision 解析失败: {e}")
             raise
+    
+    def generate_resume_summary(self, text: str, summary_prompt: str = None) -> str:
+        """
+        生成简历总结
+        
+        Args:
+            text: 简历原文
+            summary_prompt: 自定义总结提示词,如果为None则使用默认提示词
+            
+        Returns:
+            str: 中文总结内容
+        """
+        # 使用默认提示词或自定义提示词
+        if not summary_prompt:
+            summary_prompt = self._get_default_summary_prompt()
+        
+        # 截断过长的文本(保留前8000字符)
+        if len(text) > 8000:
+            text = text[:8000] + "..."
+        
+        if self.is_gemini:
+            return self._generate_summary_with_gemini(text, summary_prompt)
+        else:
+            return self._generate_summary_with_openai(text, summary_prompt)
+    
+    def _get_default_summary_prompt(self) -> str:
+        """获取默认的总结提示词"""
+        return """请基于以下简历内容,生成一份专业的中文总结。
+
+要求:
+1. 总结候选人的主要研究方向或专业领域
+2. 概括核心工作内容和项目经验
+3. 列出主要技术栈和技能
+4. 分析可能适合的职位类型
+5. 分段输出,每段有明确主题
+6. 突出重点,避免冗余
+7. 不要重复联系方式、姓名等基础信息
+
+输出格式:
+## 专业领域
+[内容]
+
+## 工作经验
+[内容]
+
+## 技术栈
+[内容]
+
+## 适合职位
+[内容]"""
+    
+    def _generate_summary_with_openai(self, text: str, summary_prompt: str) -> str:
+        """使用 OpenAI API 生成总结"""
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": summary_prompt},
+                    {"role": "user", "content": f"请总结以下简历:\n\n{text}"}
+                ],
+                temperature=0.3,
+                max_tokens=1000,
+                timeout=60.0  # 明确设置超时
+            )
+            
+            return response.choices[0].message.content.strip()
+            
+        except openai.APITimeoutError as e:
+            print(f"OpenAI API超时: {e}")
+            return "⚠️ 总结生成超时,简历内容较长,请手动审阅"
+        except openai.APIError as e:
+            print(f"OpenAI API错误: {e}")
+            return f"⚠️ API调用失败: {str(e)[:100]}"
+        except Exception as e:
+            print(f"OpenAI 生成总结失败: {e}")
+            return f"⚠️ 总结生成失败,请手动审阅"
+    
+    def _generate_summary_with_gemini(self, text: str, summary_prompt: str) -> str:
+        """使用 Gemini API 生成总结"""
+        try:
+            prompt = f"{summary_prompt}\n\n请总结以下简历:\n\n{text}"
+            response = self.client.generate_content(
+                prompt,
+                generation_config=genai.GenerationConfig(
+                    temperature=0.3,
+                    max_output_tokens=1000
+                )
+            )
+            
+            # 检查响应是否被安全过滤器拦截
+            if not response.candidates:
+                print(f"Gemini 安全过滤: 响应被完全拦截")
+                return "⚠️ 简历内容因安全策略无法生成总结,请手动审阅"
+            
+            candidate = response.candidates[0]
+            
+            # 检查是否有安全评级问题
+            if hasattr(candidate, 'safety_ratings') and candidate.safety_ratings:
+                blocked = False
+                for rating in candidate.safety_ratings:
+                    if hasattr(rating, 'blocked') and rating.blocked:
+                        blocked = True
+                        print(f"Gemini 安全过滤: {rating.category} - {rating.probability}")
+                
+                if blocked:
+                    return "⚠️ 简历内容触发安全过滤,无法生成总结,请手动审阅"
+            
+            # 检查finish_reason
+            if hasattr(candidate, 'finish_reason'):
+                if candidate.finish_reason == 3:  # SAFETY
+                    print(f"Gemini 安全过滤: finish_reason = SAFETY")
+                    return "⚠️ 简历内容因安全原因无法生成总结,请手动审阅"
+            
+            # 尝试获取文本内容
+            if hasattr(candidate.content, 'parts') and candidate.content.parts:
+                text_content = ''.join(part.text for part in candidate.content.parts if hasattr(part, 'text'))
+                if text_content:
+                    return text_content.strip()
+            
+            # 如果以上都失败,返回降级信息
+            print(f"Gemini 响应无有效内容")
+            return "⚠️ 无法生成总结,请手动审阅简历"
+            
+        except Exception as e:
+            print(f"Gemini 生成总结失败: {e}")
+            # 返回降级信息而不是抛出异常
+            return f"⚠️ 总结生成失败: {str(e)[:100]}"
     
     @staticmethod
     def get_available_models(base_url: str, api_key: str) -> List[str]:

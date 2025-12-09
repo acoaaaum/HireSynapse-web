@@ -119,6 +119,18 @@ function MainPage() {
                     formData.append('file_path', resume.filePath)
                     formData.append('ai_config', JSON.stringify(config))
 
+                    // 获取总结配置
+                    const notionConfig = localStorage.getItem('notionConfig')
+                    if (notionConfig) {
+                        const notion = JSON.parse(notionConfig)
+                        if (notion.enableSummary) {
+                            formData.append('generate_summary', 'true')
+                            if (notion.summaryPrompt) {
+                                formData.append('summary_prompt', notion.summaryPrompt)
+                            }
+                        }
+                    }
+
                     const response = await fetch('/api/resumes/parse', {
                         method: 'POST',
                         body: formData
@@ -131,11 +143,11 @@ function MainPage() {
                     const data = await response.json()
 
                     // 检查是否重复
-                    const notionConfig = localStorage.getItem('notionConfig')
+                    const notionConfigForDup = localStorage.getItem('notionConfig')
                     let isDuplicate = false
 
-                    if (notionConfig) {
-                        const notion = JSON.parse(notionConfig)
+                    if (notionConfigForDup) {
+                        const notion = JSON.parse(notionConfigForDup)
                         if (notion.token && notion.databaseId && notion.fieldMapping) {
                             const dupCheckForm = new FormData()
                             dupCheckForm.append('database_id', notion.databaseId)
@@ -152,7 +164,6 @@ function MainPage() {
                             if (dupResponse.ok) {
                                 const dupData = await dupResponse.json()
                                 isDuplicate = dupData.duplicate
-                                console.log('查重结果:', dupData)
 
                                 // 保存重复数据以便后续使用
                                 if (isDuplicate && dupData.data) {
@@ -171,7 +182,7 @@ function MainPage() {
                                 console.error('查重API调用失败:', await dupResponse.text())
                             }
                         } else {
-                            console.log('查重: Notion配置不完整,跳过查重')
+                            // Notion配置不完整,跳过查重
                         }
                     }
 
@@ -180,7 +191,8 @@ function MainPage() {
                         r.id === resume.id ? {
                             ...r,
                             status: 'completed',
-                            parsedData: data.data
+                            parsedData: data.data,
+                            rawText: data.raw_text  // 存储原始文本
                         } : r
                     ))
 
@@ -249,6 +261,12 @@ function MainPage() {
                     formData.append('field_mapping', JSON.stringify(config.fieldMapping))
                     if (config.uploadAttachment && resume.filePath) {
                         formData.append('pdf_file_path', resume.filePath)
+                    }
+
+                    // 传递PDF内容嵌入配置
+                    if (config.embedPdfContent && resume.rawText) {
+                        formData.append('embed_pdf_content', 'true')
+                        formData.append('pdf_text_content', resume.rawText)
                     }
 
                     const response = await fetch('/api/resumes/save-to-notion', {

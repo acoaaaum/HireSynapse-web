@@ -8,7 +8,10 @@ function NotionConfigModal({ onClose }) {
         token: '',
         databaseId: '',
         uploadAttachment: true,
-        fieldMapping: {}
+        fieldMapping: {},
+        enableSummary: false,
+        summaryPrompt: '',
+        embedPdfContent: false
     })
     const [databases, setDatabases] = useState([])
     const [databaseSchema, setDatabaseSchema] = useState(null)
@@ -24,8 +27,33 @@ function NotionConfigModal({ onClose }) {
         { key: 'education', label: '最高学历', required: false },
         { key: 'university', label: '毕业院校', required: false },
         { key: 'graduation_year', label: '本科毕业时间', required: false },
-        { key: 'location', label: '现居地点', required: false }
+        { key: 'location', label: '现居地点', required: false },
+        { key: 'summary', label: '简历总结', required: false }
     ]
+
+    const DEFAULT_SUMMARY_PROMPT = `请基于以下简历内容,生成一份专业的中文总结。
+
+要求:
+1. 总结候选人的主要研究方向或专业领域
+2. 概括核心工作内容和项目经验
+3. 列出主要技术栈和技能
+4. 分析可能适合的职位类型
+5. 分段输出,每段有明确主题
+6. 突出重点,避免冗余
+7. 不要重复联系方式、姓名等基础信息
+
+输出格式:
+## 专业领域
+[内容]
+
+## 工作经验
+[内容]
+
+## 技术栈
+[内容]
+
+## 适合职位
+[内容]`
 
     useEffect(() => {
         // 从 localStorage 加载配置
@@ -34,12 +62,19 @@ function NotionConfigModal({ onClose }) {
 
         if (savedConfig) {
             const parsed = JSON.parse(savedConfig)
+            // 设置默认提示词
+            if (!parsed.summaryPrompt) {
+                parsed.summaryPrompt = DEFAULT_SUMMARY_PROMPT
+            }
             setConfig(parsed)
 
             // 如果有保存的数据库ID,自动加载schema
             if (parsed.databaseId && parsed.token) {
                 fetchDatabaseSchema(parsed.databaseId, parsed.token)
             }
+        } else {
+            // 首次使用,设置默认提示词
+            setConfig(prev => ({ ...prev, summaryPrompt: DEFAULT_SUMMARY_PROMPT }))
         }
 
         if (savedDatabases) {
@@ -255,6 +290,46 @@ function NotionConfigModal({ onClose }) {
                             <p className="field-hint">选择用于存储PDF附件的Files字段</p>
                         </div>
                     )}
+
+                    {/* 简历总结配置 */}
+                    <div className="form-group">
+                        <label className="checkbox-label">
+                            <input
+                                type="checkbox"
+                                checked={config.enableSummary}
+                                onChange={(e) => setConfig({ ...config, enableSummary: e.target.checked })}
+                            />
+                            <span>启用AI简历总结</span>
+                        </label>
+                        <p className="field-hint">使用AI生成候选人的专业总结(研究方向、工作经验、技术栈、适合职位)</p>
+                    </div>
+
+                    {config.enableSummary && (
+                        <div className="form-group">
+                            <label>总结提示词</label>
+                            <textarea
+                                className="input"
+                                rows="10"
+                                value={config.summaryPrompt}
+                                onChange={(e) => setConfig({ ...config, summaryPrompt: e.target.value })}
+                                placeholder="自定义总结提示词..."
+                            />
+                            <p className="field-hint">提示词用于指导AI生成简历总结,留空使用默认模板</p>
+                        </div>
+                    )}
+
+                    {/* PDF内容嵌入配置 */}
+                    <div className="form-group">
+                        <label className="checkbox-label">
+                            <input
+                                type="checkbox"
+                                checked={config.embedPdfContent}
+                                onChange={(e) => setConfig({ ...config, embedPdfContent: e.target.checked })}
+                            />
+                            <span>在Notion正文中嵌入PDF原始内容</span>
+                        </label>
+                        <p className="field-hint">将PDF文本内容以LaTeX代码块形式添加到页面正文(位于PDF嵌入下方)</p>
+                    </div>
                 </div>
 
                 <div className="modal-footer">

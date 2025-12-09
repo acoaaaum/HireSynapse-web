@@ -68,36 +68,31 @@ function ReviewPage() {
     const handleSaveToNotion = async () => {
         setIsSaving(true)
         try {
-            // 检查Notion配置
-            const notionConfig = localStorage.getItem('notionConfig')
-            if (!notionConfig) {
-                toast.warning(t('toast.notion.config_required'))
+            const config = JSON.parse(localStorage.getItem('notionConfig') || '{}')
+
+            if (!config.token || !config.databaseId || !config.fieldMapping) {
+                toast.error(t('toast.review.notion_not_configured'))
                 return
             }
 
-            const config = JSON.parse(notionConfig)
-            if (!config.token || !config.databaseId) {
-                toast.warning(t('toast.notion.config_incomplete'))
-                return
-            }
-
-            // 准备数据
             const formDataToSend = new FormData()
             formDataToSend.append('database_id', config.databaseId)
             formDataToSend.append('notion_token', config.token)
             formDataToSend.append('data', JSON.stringify(formData))
-            formDataToSend.append('field_mapping', JSON.stringify(config.fieldMapping || {}))
-
-            // 如果需要上传附件
+            formDataToSend.append('field_mapping', JSON.stringify(config.fieldMapping))
             if (config.uploadAttachment && currentResume.filePath) {
                 formDataToSend.append('pdf_file_path', currentResume.filePath)
-                // 如果指定了attachment字段,传递给后端
                 if (config.attachmentField) {
                     formDataToSend.append('attachment_field', config.attachmentField)
                 }
             }
 
-            // 调用API
+            // 传递PDF内容嵌入配置
+            if (config.embedPdfContent && currentResume.rawText) {
+                formDataToSend.append('embed_pdf_content', 'true')
+                formDataToSend.append('pdf_text_content', currentResume.rawText)
+            }
+
             const response = await fetch('/api/resumes/save-to-notion', {
                 method: 'POST',
                 body: formDataToSend
@@ -338,7 +333,8 @@ function ReviewPage() {
         { key: 'education', label: t('review_page.fields.education') },
         { key: 'university', label: t('review_page.fields.university'), hasDict: true },
         { key: 'graduation_year', label: t('review_page.fields.graduation_year') },
-        { key: 'location', label: t('review_page.fields.location') }
+        { key: 'location', label: t('review_page.fields.location') },
+        { key: 'summary', label: '简历总结', isTextarea: true, readOnly: true }
     ]
 
     return (
@@ -454,12 +450,23 @@ function ReviewPage() {
                             <div key={field.key} className="form-group">
                                 <label>{field.label}</label>
                                 <div className="field-with-action">
-                                    <input
-                                        type="text"
-                                        className="input"
-                                        value={formData[field.key] || ''}
-                                        onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                                    />
+                                    {field.isTextarea ? (
+                                        <textarea
+                                            className="input"
+                                            rows="12"
+                                            value={formData[field.key] || ''}
+                                            onChange={(e) => handleFieldChange(field.key, e.target.value)}
+                                            readOnly={field.readOnly}
+                                            style={{ whiteSpace: 'pre-wrap' }}
+                                        />
+                                    ) : (
+                                        <input
+                                            type="text"
+                                            className="input"
+                                            value={formData[field.key] || ''}
+                                            onChange={(e) => handleFieldChange(field.key, e.target.value)}
+                                        />
+                                    )}
                                     {field.hasDict && (
                                         <button
                                             className="btn-icon"
