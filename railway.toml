@@ -4,8 +4,7 @@ builder = "NIXPACKS"
 [build.env]
 NIXPACKS_PYTHON_VERSION = "3.9"
 
-[[build.nixpacksPlan.phases.setup]]
-name = "Install Dependencies"
+[build.nixpacksPlan.phases.setup]
 cmds = ["cd backend && pip install -r requirements.txt"]
 
 [start]
