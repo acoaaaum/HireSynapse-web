@@ -16,7 +16,8 @@
         "腾讯",
         "Tencent",
         "腾讯科技",
-        "腾讯控股"
+        "腾讯控股",
+        "Tencent Technology (Shenzhen) Co., Ltd."
       ],
       "category": "互联网",
       "location": "深圳"
@@ -37,7 +38,8 @@
       "aliases": [
         "字节跳动",
         "ByteDance",
-        "字节"
+        "字节",
+        "字节跳动-抖音"
       ],
       "category": "互联网",
       "location": "北京"
@@ -46,7 +48,8 @@
       "standard": "百度",
       "aliases": [
         "百度",
-        "Baidu"
+        "Baidu",
+        "百度公司"
       ],
       "category": "互联网",
       "location": "北京"
@@ -67,7 +70,8 @@
       "aliases": [
         "美团",
         "Meituan",
-        "美团点评"
+        "美团点评",
+        "北京三快在线科技有限公司"
       ],
       "category": "互联网",
       "location": "北京"
@@ -659,7 +663,8 @@
         "Google",
         "谷歌",
         "Alphabet",
-        "GOOGL"
+        "GOOGL",
+        "Google LLC"
       ],
       "category": "互联网",
       "location": "美国"
@@ -925,6 +930,27 @@
       "standard": "阿里集团-1688",
       "aliases": [
         "阿里集团-1688"
+      ]
+    },
+    "咪咕": {
+      "standard": "咪咕",
+      "aliases": [
+        "咪咕",
+        "咪咕文化科技有限公司"
+      ]
+    },
+    "虾皮": {
+      "standard": "虾皮",
+      "aliases": [
+        "虾皮",
+        "北京虾皮信息科技有限公司"
+      ]
+    },
+    "Tiktok": {
+      "standard": "Tiktok",
+      "aliases": [
+        "Tiktok",
+        "TikTok Inc."
       ]
     }
   }

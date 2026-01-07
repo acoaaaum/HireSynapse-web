@@ -16,7 +16,9 @@
         "腾讯",
         "Tencent",
         "腾讯科技",
-        "腾讯控股"
+        "腾讯控股",
+        "Tencent Technology (Shenzhen) Co., Ltd.",
+        "Tencent Youtu Lab"
       ],
       "category": "互联网",
       "location": "深圳"
@@ -37,7 +39,8 @@
       "aliases": [
         "字节跳动",
         "ByteDance",
-        "字节"
+        "字节",
+        "字节跳动-抖音"
       ],
       "category": "互联网",
       "location": "北京"
@@ -68,7 +71,8 @@
       "aliases": [
         "美团",
         "Meituan",
-        "美团点评"
+        "美团点评",
+        "北京三快在线科技有限公司"
       ],
       "category": "互联网",
       "location": "北京"
@@ -165,7 +169,8 @@
       "aliases": [
         "华为",
         "Huawei",
-        "华为技术"
+        "华为技术",
+        "华为云计算技术有限公司"
       ],
       "category": "科技",
       "location": "深圳"
@@ -929,17 +934,53 @@
         "阿里集团-1688"
       ]
     },
-    "字节跳动-抖音": {
-      "standard": "字节跳动-抖音",
-      "aliases": [
-        "字节跳动-抖音"
-      ]
-    },
     "咪咕": {
       "standard": "咪咕",
       "aliases": [
         "咪咕",
         "咪咕文化科技有限公司"
+      ]
+    },
+    "虾皮": {
+      "standard": "虾皮",
+      "aliases": [
+        "虾皮",
+        "北京虾皮信息科技有限公司"
+      ]
+    },
+    "Tiktok": {
+      "standard": "Tiktok",
+      "aliases": [
+        "Tiktok",
+        "TikTok Inc."
+      ]
+    },
+    "微软": {
+      "standard": "微软",
+      "aliases": [
+        "微软",
+        "微软Microsoft DKI (原微软亚洲研究院DKI)"
+      ]
+    },
+    "阿里云": {
+      "standard": "阿里云",
+      "aliases": [
+        "阿里云",
+        "阿里云智能"
+      ]
+    },
+    "无问芯穹": {
+      "standard": "无问芯穹",
+      "aliases": [
+        "无问芯穹",
+        "北京无问芯穹科技有限公司"
+      ]
+    },
+    "影石": {
+      "standard": "影石",
+      "aliases": [
+        "影石",
+        "影石·Insta360 研究院"
       ]
     }
   }

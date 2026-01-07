@@ -17,8 +17,7 @@
         "Tencent",
         "腾讯科技",
         "腾讯控股",
-        "Tencent Technology (Shenzhen) Co., Ltd.",
-        "Tencent Youtu Lab"
+        "Tencent Technology (Shenzhen) Co., Ltd."
       ],
       "category": "互联网",
       "location": "深圳"
@@ -40,8 +39,7 @@
         "字节跳动",
         "ByteDance",
         "字节",
-        "字节跳动-抖音",
-        "抖音搜索电商"
+        "字节跳动-抖音"
       ],
       "category": "互联网",
       "location": "北京"
@@ -220,8 +218,7 @@
         "旷视科技",
         "旷视",
         "Face++",
-        "Megvii",
-        "北京旷视科技有限公司"
+        "Megvii"
       ],
       "category": "人工智能",
       "location": "北京"
@@ -969,34 +966,6 @@
       "aliases": [
         "阿里云",
         "阿里云智能"
-      ]
-    },
-    "无问芯穹": {
-      "standard": "无问芯穹",
-      "aliases": [
-        "无问芯穹",
-        "北京无问芯穹科技有限公司"
-      ]
-    },
-    "影石": {
-      "standard": "影石",
-      "aliases": [
-        "影石",
-        "影石·Insta360 研究院"
-      ]
-    },
-    "Glabs": {
-      "standard": "Glabs",
-      "aliases": [
-        "Glabs",
-        "glabs.Inc"
-      ]
-    },
-    "AWS": {
-      "standard": "AWS",
-      "aliases": [
-        "AWS",
-        "AWS AI Labs"
       ]
     }
   }

@@ -984,20 +984,6 @@
         "影石",
         "影石·Insta360 研究院"
       ]
-    },
-    "Glabs": {
-      "standard": "Glabs",
-      "aliases": [
-        "Glabs",
-        "glabs.Inc"
-      ]
-    },
-    "AWS": {
-      "standard": "AWS",
-      "aliases": [
-        "AWS",
-        "AWS AI Labs"
-      ]
     }
   }
 }
